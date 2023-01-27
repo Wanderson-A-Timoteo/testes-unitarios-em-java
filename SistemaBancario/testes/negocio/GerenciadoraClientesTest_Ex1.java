@@ -24,7 +24,6 @@ public class GerenciadoraClientesTest_Ex1 {
 		
 		GerenciadoraClientes gerClientes = new GerenciadoraClientes(clientesDoBanco);
 		
-		// Método testado pesquisaCliente()
 		Cliente cliente = gerClientes.pesquisaCliente(1);
 		
 		assertThat(cliente.getId(), is(1));

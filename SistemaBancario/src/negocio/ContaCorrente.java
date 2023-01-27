@@ -3,8 +3,9 @@ package negocio;
 /**
  * Classe {@link ContaCorrente} que representa uma conta corrente real
  * e que poderá ser associada a um cliente.
- * @author Wanderson Timóteo
- */
+ * @author wanderson
+ **/
+
 public class ContaCorrente {
 	
 	private int id;

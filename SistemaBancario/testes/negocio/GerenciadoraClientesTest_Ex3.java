@@ -52,7 +52,7 @@ public class GerenciadoraClientesTest_Ex3 {
 		
 		gerClientes = new GerenciadoraClientes(clientesDoBanco);
 		
-		/* ========== Execuão ========== */
+		/* ========== Execução ========== */
 		boolean clienteRemovido = gerClientes.removeCliente(2);
 		
 		/* ========== Verificações ========== */

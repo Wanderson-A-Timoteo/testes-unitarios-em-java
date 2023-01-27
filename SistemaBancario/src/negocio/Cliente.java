@@ -1,9 +1,10 @@
 package negocio;
 
 /**
- * Classe {@link Cliente} que representa um cliente real do banco.
- * @author Wanderson Timóteo
- */
+ * Class {@link Cliente} que representa um cliente real do banco
+ * @author wanderson 
+ **/
+
 public class Cliente {
 
 	private int id;

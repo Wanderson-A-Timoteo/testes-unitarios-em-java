@@ -4,8 +4,9 @@ import java.util.List;
 
 /**
  * Classe de negócio para realizar operações sobre os clientes do banco.
- * @author Wanderson Timóteo
+ * @author wanderson
  */
+
 public class GerenciadoraClientes {
 
 	private List<Cliente> clientesDoBanco;
