@@ -3,7 +3,7 @@
     align="center" 
     alt="Imagem TDD com Java" 
     title="Imagem Teste Driven Development" 
-    src="github/tdd-com-java.png"
+    src="github/tdd-com-java-02.png"
   />
   <br>
   Desenvolvimento Orientado a Testes
@@ -76,12 +76,12 @@ Estes são meus testes unitários desenvolvidos na linguagem de programação Ja
 </p>
 <br>
 
-### *Teste setUp e tearDown*
+### *Todos os testes*
 
 <p align="center">
     <img 
         alt="Imagem Todos os Teste" title="Imagem Todos os Teste" 
-        src="github/testes-setUp-e-tearDown.png" 
+        src="github/todos-testes.png" 
     />
 </p>
 <br>
@@ -157,6 +157,7 @@ Feito com ♥ by
 <div align="center">
   <img alt="Udemy" 
        src="github/udemy.png" 
+       width="400px"
   />
 
 <br>
@@ -168,7 +169,8 @@ Feito com ♥ by
 
 <div align="center">
   <img alt="Gustavo Farias" 
-       src="github/gustavo-faria.jpeg" 
+       src="github/gustavo-faria.jpeg"
+       width="350px" 
     />
 </div>
 
@@ -182,7 +184,8 @@ Feito com ♥ by
 ` Testes unitários em JAVA: Domine JUnit, Mockito e TDD `
 <div align="center">
     <img alt="Gustavo Farias" 
-       src="github/francisco-wagner-costa.jpeg" 
+       src="github/francisco-wagner-costa.jpeg"
+       width="350px" 
     />
 </div>
 
