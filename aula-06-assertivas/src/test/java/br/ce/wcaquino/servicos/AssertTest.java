@@ -42,7 +42,24 @@ public class AssertTest {
 		// 2º forma: Convertendo o objeto para tipo primitivo
 		Assert.assertEquals(i, i2.intValue());
 		
+		// Comparação de Styrings
+		Assert.assertEquals("bola", "bola");
 		
+		/*
+		 *  Comparação de Strings precisam ser todas iguais, neste caso como uma String
+		 *  esta maiuscula ocorrerá falha
+		 */
+		//Assert.assertEquals("bola", "Bola");
+		
+		/*
+		 * Para comparação de Strings com letras maiusculas e minuscula devemos usar
+		 * assertTrue  
+		 **/
+		Assert.assertTrue("bola".equalsIgnoreCase("Bola"));
+		
+		// Comparação de radical
+		Assert.assertTrue("bola".startsWith("bo"));
+
 	}
 
 }
