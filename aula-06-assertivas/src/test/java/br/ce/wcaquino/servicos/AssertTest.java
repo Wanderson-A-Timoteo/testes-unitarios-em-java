@@ -44,8 +44,14 @@ public class AssertTest {
 		// 2º forma: Convertendo o objeto para tipo primitivo
 		Assert.assertEquals(i, i2.intValue());
 		
-		// Comparação de Styrings
+		// Comparação de Strings
 		Assert.assertEquals("bola", "bola");
+		
+		/* 
+		 * Todos os metodos de comparação se são iguais também tem a sua comparação 
+		 * de Negação, neste caso a negação com Strings
+		 */
+		Assert.assertNotEquals("bola", "patins");
 		
 		/*
 		 *  Comparação de Strings precisam ser todas iguais, neste caso como uma String
@@ -118,6 +124,13 @@ public class AssertTest {
 		Assert.assertSame(u3, u2);
 		
 		/*
+		 * AssertSame também tem a sua negação assertNotSame, que comparará se um 
+		 * objeto não tem a mesma instancia que o outro objeto, garantindo assim
+		 * que embora sejam objetos iguais, não tem a mesma instancia
+		 */
+		Assert.assertNotSame(u1, u2);
+		
+		/*
 		 * Se precisarmos verificar se um objeto é nulo? Podemos comparar de dois formas
 		 */
 		// 1º forma com assertTrue
@@ -125,6 +138,12 @@ public class AssertTest {
 		
 		// 2º forma com assertNull
 		Assert.assertNull(u4);
+		
+		/*
+		 * assertNull também tem a assertNotNull para garantir que os objetos não 
+		 * estão vazios
+		 */
+		Assert.assertNotNull(u2);
 	}
 
 }
