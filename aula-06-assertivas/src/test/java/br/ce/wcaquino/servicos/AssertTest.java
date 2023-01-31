@@ -65,7 +65,8 @@ public class AssertTest {
 		//Comparação entre dois objetos
 		Usuario u1 = new Usuario("Usuario 1");
 		Usuario u2 = new Usuario("Usuario 1");
-		
+		Usuario u3 = u2;
+		Usuario u4 = null;
 		/* 
 		 * Neste caso o assertEquals não considera esses dois objetos iguais, pois não 
 		 * existe um metodo equals implementado no objeto Usuario.
@@ -97,6 +98,33 @@ public class AssertTest {
 		 */
 		Assert.assertEquals(u1, u2);
 		
+		/*
+		 * Mas, se precisarmos saber se a instancia entre os dois objetos em 
+		 * comparação são iguais, ou seja, saber se é o mesmo objeto?  
+		 */
+		/* 
+		 * Neste caso usamos o assertSame para comparar se uma instancia é igual a outra
+		 * Neste caso gerara erro pois u1 tem instancia diferente de u2
+		 */
+		//Assert.assertSame(u1, u2); 
+		
+		// Neste caso a comparação é verdadeira
+		Assert.assertSame(u1, u1); 
+		
+		/* 
+		 * Neste caso é verdadeiro, pois estou apontando que u3 recebe o objeto u2.
+		 * Assim u3 terá a mesma instancia que u2
+		 */
+		Assert.assertSame(u3, u2);
+		
+		/*
+		 * Se precisarmos verificar se um objeto é nulo? Podemos comparar de dois formas
+		 */
+		// 1º forma com assertTrue
+		Assert.assertTrue(u4 == null);
+		
+		// 2º forma com assertNull
+		Assert.assertNull(u4);
 	}
 
 }
