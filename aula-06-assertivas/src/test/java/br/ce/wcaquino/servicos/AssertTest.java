@@ -74,15 +74,28 @@ public class AssertTest {
 		 * neste caso o objeto Usuario.
 		 */
 		/* Gera erro pois sem o metodo equals implementado em Usuario quem fará a comparação 
-		 * será o Objeto mais ancestral object e este fará a comparação entre instancias, isso 
-		 * retornará falso pois são instancia diferentes, embora sejam o mesmo objto
+		 * será o Objeto mais ancestral object e este fará a comparação entre instancias, 
+		 * isso retornará falso pois são instancia diferentes, embora sejam o mesmo objto
 		 */
 		//Assert.assertEquals(u1, u2); 
 		
-		// Desta forma o object mais ancestral de Usuario comparará a instancia e retornará verdadeiro
+		/* 
+		 * Desta forma o object mais ancestral de Usuario comparará a instancia e retornará 
+		 * verdadeiro
+		 */
 		Assert.assertEquals(u1, u1); 
 		
-		
+		/*
+		 * Então, como podemos comprar U1 e U2 e obter o resultado verdadeiro já que os 
+		 * dois são o mesmo objeto?
+		 * Criando o metodo equal no objeto que esta sendo comparado, neste caso o 
+		 * objeto Usuario.
+		 */
+		/*
+		 * Após criar o metodo hashCode() and equals(), no objeto Usuario, a comparação 
+		 * entre os dois objetos retornará verdadeiro
+		 */
+		Assert.assertEquals(u1, u2);
 		
 	}
 
