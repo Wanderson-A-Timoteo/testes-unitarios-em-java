@@ -15,6 +15,9 @@ public class AssertTest {
 		// AssertEquals compara se um parametro é igual ao outro
 		Assert.assertEquals(1, 1); // 1 é igual a 1
 		
+		// Mostra a mensagem de erro passada se o resultado for falso
+		Assert.assertEquals("Erro de comparação", 1, 1);
+		
 		/* O terceiro parametro é a margem de erro. Nele passamos quantas casas decimais
 		 * queremos comparar.  
 		 */
