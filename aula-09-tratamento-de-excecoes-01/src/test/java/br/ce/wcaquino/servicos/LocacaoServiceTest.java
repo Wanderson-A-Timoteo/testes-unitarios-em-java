@@ -53,18 +53,38 @@ public class LocacaoServiceTest {
 		service.alugarFilme(usuario, filme);
 	}
 	
-	// Exceção robusta 
+	// Exceção robusta - Parte 01
 	// Este tese verifica se foi lançado uma exceção com a msn "Filme sem estoque" para passar no teste
 	@Test
 	public void testeLocacao_filmesSemEstoque_02() {
 		//cenario
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuario 1");
-		Filme filme = new Filme("Filme 1", 0, 5.0);
+		Filme filme = new Filme("Filme 1", 0, 5.0); // Lança exceção pq estoque tá zerado
 		
 		//acao
 		try {
 			service.alugarFilme(usuario, filme);
+		} catch (Exception e) {
+			assertThat(e.getMessage(), is("Filme sem estoque"));
+		}
+	}
+	
+	// Exceção robusta - Parte 02
+	// Mas se o estoque não estiver zerado a exceção não é lançada
+	// Para resguardar que seja capturada uma exceção é preciso add Assert.fail()
+	@Test
+	public void testeLocacao_filmesSemEstoque_03() {
+		//cenario
+		LocacaoService service = new LocacaoService();
+		Usuario usuario = new Usuario("Usuario 1");
+		Filme filme = new Filme("Filme 1", 2, 5.0); // Não lança exceção pq tem estoque
+		
+		//acao
+		try {
+			service.alugarFilme(usuario, filme);
+			// Se não for lançado nenhuma exceção podemos resgardar o teste com Assert.fail()
+			Assert.fail("Deveria ter lançado uma exceção");
 		} catch (Exception e) {
 			assertThat(e.getMessage(), is("Filme sem estoque"));
 		}
