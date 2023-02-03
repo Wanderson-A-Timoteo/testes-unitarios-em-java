@@ -8,6 +8,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.security.Provider.Service;
 import java.util.Date;
 
 import org.junit.Assert;
@@ -20,6 +21,7 @@ import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.exceptions.FilmesSemEstoqueException;
+import br.ce.wcaquino.exceptions.LocadoraException;
 
 public class LocacaoServiceTest {
 
@@ -55,4 +57,19 @@ public class LocacaoServiceTest {
 		//acao
 		service.alugarFilme(usuario, filme);
 	}	
+	
+	@Test
+	public void testLocadora_usuarioVazio() throws FilmesSemEstoqueException {
+		// cenário
+		LocacaoService service = new LocacaoService();
+		Filme filme = new Filme("Filme 2", 2, 4.0);
+		
+		// ação		
+		try {
+			service.alugarFilme(null, filme);
+			Assert.fail();
+		} catch (LocadoraException e) {
+			assertThat(e.getMessage(), is("Usuário vazio"));
+		}	
+	}
 }
