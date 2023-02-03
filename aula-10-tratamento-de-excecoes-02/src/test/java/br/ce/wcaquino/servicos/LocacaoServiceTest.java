@@ -47,6 +47,9 @@ public class LocacaoServiceTest {
 		error.checkThat(isMesmaData(locacao.getDataRetorno(), obterDataComDiferencaDias(1)), is(true));
 	}
 	
+	// Exceção elegante funciona bem quando apenas a exceção é importante, ou seja, 
+	// nos casos onde podemos garantir o motivo pela qual a exceção foi lançada.
+	// Mas se precisarmos da mensagem, então precisará ser a robusta ou a forma nova
 	@Test(expected = FilmesSemEstoqueException.class)
 	public void testLocacao_filmeSemEstoque() throws Exception{
 		//cenario
@@ -58,6 +61,9 @@ public class LocacaoServiceTest {
 		service.alugarFilme(usuario, filme);
 	}	
 	
+	// Exceção robusta é a unica que consegue continuar a executar mesmo depois de 
+	// lançar a exceção, ou seja, se precisamos executar outros metodos depois de 
+	// lançar uma exceção a forma robusta é a única que possui este funcionalidade 
 	@Test
 	public void testLocadora_usuarioVazio() throws FilmesSemEstoqueException {
 		// cenário
@@ -71,5 +77,24 @@ public class LocacaoServiceTest {
 		} catch (LocadoraException e) {
 			assertThat(e.getMessage(), is("Usuário vazio"));
 		}	
+		
+		System.out.println("Forma Robusta");
+	}
+	
+	// Exceção forma nova 
+	@Test
+	public void testLocacao_filmeVazio() throws FilmesSemEstoqueException, LocadoraException {
+		//cenario
+		LocacaoService service = new LocacaoService();
+		Usuario usuario = new Usuario("Usuario 1");
+		
+		exception.expect(LocadoraException.class);
+		exception.expectMessage("Filme vazio");
+				
+		//acao
+		service.alugarFilme(usuario, null);
+		
+		System.out.println("Forma Nova");
+						
 	}
 }
