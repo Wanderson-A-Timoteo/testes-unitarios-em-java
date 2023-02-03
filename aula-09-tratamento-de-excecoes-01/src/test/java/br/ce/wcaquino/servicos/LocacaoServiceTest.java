@@ -16,6 +16,7 @@ import org.junit.rules.ErrorCollector;
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
+import junit.framework.Assert;
 
 public class LocacaoServiceTest {
 
@@ -23,7 +24,7 @@ public class LocacaoServiceTest {
 	public ErrorCollector error = new ErrorCollector();
 	
 	@Test
-	public void testeLocacao() {
+	public void testeLocacao() throws Exception {
 		//cenario
 		LocacaoService service = new LocacaoService();
 		Usuario usuario = new Usuario("Usuario 1");
@@ -31,10 +32,10 @@ public class LocacaoServiceTest {
 		
 		//acao
 		Locacao locacao = service.alugarFilme(usuario, filme);
-		
+			
 		//verificacao
 		error.checkThat(locacao.getValor(), is(equalTo(5.0)));
 		error.checkThat(isMesmaData(locacao.getDataLocacao(), new Date()), is(true));
-		error.checkThat(isMesmaData(locacao.getDataRetorno(), obterDataComDiferencaDias(1)), is(true));
+		error.checkThat(isMesmaData(locacao.getDataRetorno(), obterDataComDiferencaDias(1)), is(true));		
 	}
 }
