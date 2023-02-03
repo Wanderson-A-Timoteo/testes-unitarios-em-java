@@ -38,4 +38,17 @@ public class LocacaoServiceTest {
 		error.checkThat(isMesmaData(locacao.getDataLocacao(), new Date()), is(true));
 		error.checkThat(isMesmaData(locacao.getDataRetorno(), obterDataComDiferencaDias(1)), is(true));		
 	}
+	
+	// Exceção elegante 
+	// Este tese verifica se foi lançado uma exceção de filme sem estoque para passar no teste
+	@Test(expected = Exception.class)
+	public void testeLocacao_filmesSemEstoque() throws Exception {
+		//cenario
+		LocacaoService service = new LocacaoService();
+		Usuario usuario = new Usuario("Usuario 1");
+		Filme filme = new Filme("Filme 1", 0, 5.0);
+		
+		//acao
+		service.alugarFilme(usuario, filme);
+	}
 }
