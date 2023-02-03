@@ -13,6 +13,7 @@ import java.util.Date;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
+import org.junit.rules.ExpectedException;
 
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
@@ -23,6 +24,9 @@ public class LocacaoServiceTest {
 
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
+	
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
 	
 	@Test
 	public void testeLocacao() throws Exception {
@@ -40,7 +44,8 @@ public class LocacaoServiceTest {
 		error.checkThat(isMesmaData(locacao.getDataRetorno(), obterDataComDiferencaDias(1)), is(true));		
 	}
 	
-	// Exceção elegante 
+	// 3 tipos de tratamento de exceção
+	// 1º Exceção elegante 
 	// Este tese verifica se foi lançado uma exceção de filme sem estoque para passar no teste
 	@Test(expected = Exception.class)
 	public void testeLocacao_filmesSemEstoque() throws Exception {
@@ -53,7 +58,7 @@ public class LocacaoServiceTest {
 		service.alugarFilme(usuario, filme);
 	}
 	
-	// Exceção robusta - Parte 01
+	// 2º - Exceção robusta - Parte 01
 	// Este tese verifica se foi lançado uma exceção com a msn "Filme sem estoque" para passar no teste
 	@Test
 	public void testeLocacao_filmesSemEstoque_02() {
@@ -70,7 +75,7 @@ public class LocacaoServiceTest {
 		}
 	}
 	
-	// Exceção robusta - Parte 02
+	// 2º - Exceção robusta - Parte 02
 	// Mas se o estoque não estiver zerado a exceção não é lançada
 	// Para resguardar que seja capturada uma exceção é preciso add Assert.fail()
 	@Test
@@ -83,10 +88,30 @@ public class LocacaoServiceTest {
 		//acao
 		try {
 			service.alugarFilme(usuario, filme);
+			// Para não gerar um falso positivo
 			// Se não for lançado nenhuma exceção podemos resgardar o teste com Assert.fail()
-			Assert.fail("Deveria ter lançado uma exceção");
+			org.junit.Assert.fail("Deveria ter lançado uma exceção");
 		} catch (Exception e) {
 			assertThat(e.getMessage(), is("Filme sem estoque"));
 		}
+	}
+	
+	// 3º - Exceção forma nova 
+	// @Rule ExpectedException
+	@Test
+	public void testeLocacao_filmesSemEstoque_04() throws Exception {
+		//cenario
+		LocacaoService service = new LocacaoService();
+		Usuario usuario = new Usuario("Usuario 1");
+		Filme filme = new Filme("Filme 1", 0, 5.0);
+		
+		// ExpectedException - Precisa ser declarada antes da ação
+		exception.expect(Exception.class);	// É esperado que uma exception seja lançada
+		exception.expectMessage("Filme sem estoque");
+		
+		//acao
+		service.alugarFilme(usuario, filme);
+			
+		
 	}
 }
