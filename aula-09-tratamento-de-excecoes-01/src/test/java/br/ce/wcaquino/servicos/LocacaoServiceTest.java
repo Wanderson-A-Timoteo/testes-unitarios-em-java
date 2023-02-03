@@ -6,6 +6,7 @@ import static br.ce.wcaquino.utils.DataUtils.isMesmaData;
 import static br.ce.wcaquino.utils.DataUtils.obterDataComDiferencaDias;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.util.Date;
 
@@ -50,5 +51,22 @@ public class LocacaoServiceTest {
 		
 		//acao
 		service.alugarFilme(usuario, filme);
+	}
+	
+	// Exceção robusta 
+	// Este tese verifica se foi lançado uma exceção com a msn "Filme sem estoque" para passar no teste
+	@Test
+	public void testeLocacao_filmesSemEstoque_02() {
+		//cenario
+		LocacaoService service = new LocacaoService();
+		Usuario usuario = new Usuario("Usuario 1");
+		Filme filme = new Filme("Filme 1", 0, 5.0);
+		
+		//acao
+		try {
+			service.alugarFilme(usuario, filme);
+		} catch (Exception e) {
+			assertThat(e.getMessage(), is("Filme sem estoque"));
+		}
 	}
 }
