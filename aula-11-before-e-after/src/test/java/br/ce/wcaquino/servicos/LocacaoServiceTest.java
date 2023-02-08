@@ -29,7 +29,10 @@ import br.ce.wcaquino.exceptions.LocadoraException;
 public class LocacaoServiceTest {
 	
 	private LocacaoService service;
-
+	
+	// Definir contador
+	private int contador = 0;
+	
 	@Rule
 	public ErrorCollector error = new ErrorCollector();
 	
@@ -40,6 +43,12 @@ public class LocacaoServiceTest {
 	public void setup() {
 		System.out.println("Before");
 		service = new LocacaoService();
+		
+		// Incremento do contador
+		contador++;
+		
+		// Impressão do contador
+		System.out.println(contador);
 	}
 	
 	@After
