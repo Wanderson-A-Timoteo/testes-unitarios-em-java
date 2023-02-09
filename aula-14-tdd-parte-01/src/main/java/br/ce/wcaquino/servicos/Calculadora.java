@@ -1,0 +1,10 @@
+package br.ce.wcaquino.servicos;
+
+public class Calculadora {
+
+	public int somar(int a, int b) {
+		// TODO Auto-generated method stub
+		return a + b;
+	}
+
+}
