@@ -19,4 +19,64 @@ public class CalculadoraTest {
 		// Verificação
 		Assert.assertEquals(8, resultado);
 	}
+	
+	@Test
+	public void deveSubtrairDoisValores() {
+		// Cenário
+		int a = 15;
+		int b = 5;
+		Calculadora calc = new Calculadora();
+		
+		// Ação
+		int resultado = calc.subtrair(a, b);
+		
+		
+		// Verificação
+		Assert.assertEquals(10, resultado);
+	}
+	
+	@Test
+	public void deveMultiplicarDoisValores() {
+		// Cenário
+		int a = 3;
+		int b = 6;
+		Calculadora calc = new Calculadora();
+		
+		// Ação
+		int resultado = calc.Multiplicar(a, b);
+		
+		
+		// Verificação
+		Assert.assertEquals(18, resultado);
+	}
+	
+	@Test
+	public void deveDividirDoisValores() {
+		// Cenário
+		int a = 15;
+		int b = 3;
+		Calculadora calc = new Calculadora();
+		
+		// Ação
+		int resultado = calc.Dividir(a, b);
+		
+		
+		// Verificação
+		Assert.assertEquals(5, resultado);
+	}
+	
+	@Test
+	public void deveObterRestoDivisaoDoisValores() {
+		// Cenário
+		int a = 10;
+		int b = 5;
+		Calculadora calc = new Calculadora();
+		
+		// Ação
+		int resultado = calc.RestoDivisao(a, b);
+		
+		
+		// Verificação
+		Assert.assertEquals(0, resultado);
+	}
 }
