@@ -1,6 +1,9 @@
 package br.ce.wcaquino.servicos;
 
 import org.junit.Test;
+
+import br.ce.wcaquino.exceptions.NaoPodeDividirPorZeroException;
+
 import org.junit.Assert;
 
 public class CalculadoraTest {
@@ -51,7 +54,7 @@ public class CalculadoraTest {
 	}
 	
 	@Test
-	public void deveDividirDoisValores() {
+	public void deveDividirDoisValores() throws NaoPodeDividirPorZeroException {
 		// Cenário
 		int a = 15;
 		int b = 3;
@@ -78,5 +81,15 @@ public class CalculadoraTest {
 		
 		// Verificação
 		Assert.assertEquals(0, resultado);
+	}
+	
+	@Test(expected = NaoPodeDividirPorZeroException.class)
+	public void deveLancarExcecaoAoDividirPorZero() throws NaoPodeDividirPorZeroException {
+		// Cenário
+		int a = 10;
+		int b = 0;
+		Calculadora calc = new Calculadora();
+		
+		calc.Dividir(a, b);
 	}
 }
