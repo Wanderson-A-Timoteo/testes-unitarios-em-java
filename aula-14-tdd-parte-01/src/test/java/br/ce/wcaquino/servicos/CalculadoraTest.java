@@ -5,16 +5,23 @@ import org.junit.Test;
 import br.ce.wcaquino.exceptions.NaoPodeDividirPorZeroException;
 
 import org.junit.Assert;
+import org.junit.Before;
 
 public class CalculadoraTest {
+	
+	private Calculadora calc;
+	
+	@Before
+	public void setup() {
+		calc = new Calculadora();
+	}
 
 	@Test
 	public void deveSomarDoisValores() {
 		// Cenário
 		int a = 5;
 		int b = 3;
-		Calculadora calc = new Calculadora();
-		
+				
 		// Ação
 		int resultado = calc.somar(a, b);
 		
@@ -28,7 +35,6 @@ public class CalculadoraTest {
 		// Cenário
 		int a = 15;
 		int b = 5;
-		Calculadora calc = new Calculadora();
 		
 		// Ação
 		int resultado = calc.subtrair(a, b);
@@ -43,7 +49,6 @@ public class CalculadoraTest {
 		// Cenário
 		int a = 3;
 		int b = 6;
-		Calculadora calc = new Calculadora();
 		
 		// Ação
 		int resultado = calc.Multiplicar(a, b);
@@ -58,7 +63,6 @@ public class CalculadoraTest {
 		// Cenário
 		int a = 15;
 		int b = 3;
-		Calculadora calc = new Calculadora();
 		
 		// Ação
 		int resultado = calc.Dividir(a, b);
@@ -73,7 +77,6 @@ public class CalculadoraTest {
 		// Cenário
 		int a = 10;
 		int b = 5;
-		Calculadora calc = new Calculadora();
 		
 		// Ação
 		int resultado = calc.RestoDivisao(a, b);
@@ -88,7 +91,6 @@ public class CalculadoraTest {
 		// Cenário
 		int a = 10;
 		int b = 0;
-		Calculadora calc = new Calculadora();
 		
 		calc.Dividir(a, b);
 	}
