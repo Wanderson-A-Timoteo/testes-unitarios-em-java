@@ -42,6 +42,7 @@ public class LocacaoServiceTest {
 		service = new LocacaoService();
 	}
 	
+	// O teste deveDevolverNaSegundaAoAlugarNoSabado quebra este teste
 	@Test
 	public void deveAlugarFilme() throws Exception {
 		//cenario
@@ -164,7 +165,8 @@ public class LocacaoServiceTest {
 		// Ação
 		Locacao retorno = service.alugarFilme(usuario, filmes);
 		
-		// Verificação
+		// Verificação  
+		// Este teste entra em conflito quebrando o teste deveAlugarFilme que faz o teste de seg a sex
 		boolean ehSegunda = DataUtils.verificarDiaSemana(retorno.getDataRetorno(), Calendar.MONDAY);
 		Assert.assertTrue(ehSegunda);
 	}
