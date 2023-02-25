@@ -93,7 +93,7 @@ public class LocacaoServiceTest {
 	
 	// Desconto de 25% no 3º Filme
 	@Test
-	public void devePagar75PorCentoNoFilme() throws FilmeSemEstoqueException, LocadoraException {
+	public void devePagar75PorCentoNoFilme3() throws FilmeSemEstoqueException, LocadoraException {
 		// Cenário
 		Usuario usuario = new Usuario("Usuario 01");
 		List<Filme> filmes = Arrays.asList(
@@ -112,7 +112,7 @@ public class LocacaoServiceTest {
 	
 	// Desconto de 50% no 4º Filme
 	@Test
-	public void devePagar50PorCentoNoFilme() throws FilmeSemEstoqueException, LocadoraException {
+	public void devePagar50PorCentoNoFilme4() throws FilmeSemEstoqueException, LocadoraException {
 		// Cenário
 		Usuario usuario = new Usuario("Usuario 01");
 		List<Filme> filmes = Arrays.asList(
@@ -132,7 +132,7 @@ public class LocacaoServiceTest {
 	
 	// Desconto de 75% no 5º Filme
 	@Test
-	public void devePagar25PorCentoNoFilme() throws FilmeSemEstoqueException, LocadoraException {
+	public void devePagar25PorCentoNoFilme5() throws FilmeSemEstoqueException, LocadoraException {
 		// Cenário
 		Usuario usuario = new Usuario("Usuario 01");
 		List<Filme> filmes = Arrays.asList(
@@ -140,7 +140,7 @@ public class LocacaoServiceTest {
 				new Filme("Filme 2", 2, 4.0), 
 				new Filme("Filme 3", 2, 4.0), // Desconto de 25% = 3.0
 				new Filme("Filme 4", 2, 4.0), // Desconto de 50% = 2.0
-				new Filme("Filme 4", 2, 4.0)  // Desconto de 75% = 1.0
+				new Filme("Filme 5", 2, 4.0)  // Desconto de 75% = 1.0
 				);
 				
 		// Ação
@@ -148,6 +148,28 @@ public class LocacaoServiceTest {
 		
 		// Verificação
 		// Filme 4.0 - 75% = 1.0 então 4.0 + 4.0 + 3.0 + 2.0 + 1.0 = 14.0
+		assertThat(resultado.getValor(), is(14.0));
+	}
+	
+	// Desconto de 100% no 6º Filme
+	@Test
+	public void devePagar00PorCentoNoFilme6() throws FilmeSemEstoqueException, LocadoraException {
+		// Cenário
+		Usuario usuario = new Usuario("Usuario 01");
+		List<Filme> filmes = Arrays.asList(
+				new Filme("Filme 1", 2, 4.0), 
+				new Filme("Filme 2", 2, 4.0), 
+				new Filme("Filme 3", 2, 4.0), // Desconto de 25% = 3.0
+				new Filme("Filme 4", 2, 4.0), // Desconto de 50% = 2.0
+				new Filme("Filme 5", 2, 4.0), // Desconto de 75% = 1.0
+				new Filme("Filme 6", 2, 4.0)  // Desconto de 100% = 0.0
+				);
+				
+		// Ação
+		Locacao resultado = service.alugarFilme(usuario, filmes);
+		
+		// Verificação
+		// Filme 4.0 - 100% = 0.0 então 4.0 + 4.0 + 3.0 + 2.0 + 1.0 + 0.0 = 14.0
 		assertThat(resultado.getValor(), is(14.0));
 	}
 }

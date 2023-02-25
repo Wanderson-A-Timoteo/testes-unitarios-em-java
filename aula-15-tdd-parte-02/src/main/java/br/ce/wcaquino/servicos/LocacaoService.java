@@ -51,6 +51,11 @@ public class LocacaoService {
 				// 25% do valor do filme
 				valorFilme = valorFilme * 0.25;
 			}
+			// Sexto Filme
+			if(i == 5) {
+				// 0% do valor do filme
+				valorFilme = 0d;
+			}
 			valorTotal += valorFilme;
 		}
 		locacao.setValor(valorTotal);
