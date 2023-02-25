@@ -99,7 +99,7 @@ public class LocacaoServiceTest {
 		List<Filme> filmes = Arrays.asList(
 				new Filme("Filme 1", 2, 4.0), 
 				new Filme("Filme 2", 2, 4.0), 
-				new Filme("Filme 3", 2, 4.0)
+				new Filme("Filme 3", 2, 4.0)  // Desconto de 25% = 3.0
 				);
 				
 		// Ação
@@ -110,4 +110,23 @@ public class LocacaoServiceTest {
 		assertThat(resultado.getValor(), is(11.0));
 	}
 	
+	// Desconto de 50% no 4º Filme
+	@Test
+	public void devePagar50PorCentoNoFilme() throws FilmeSemEstoqueException, LocadoraException {
+		// Cenário
+		Usuario usuario = new Usuario("Usuario 01");
+		List<Filme> filmes = Arrays.asList(
+				new Filme("Filme 1", 2, 4.0), 
+				new Filme("Filme 2", 2, 4.0), 
+				new Filme("Filme 3", 2, 4.0), // Desconto de 25% = 3.0
+				new Filme("Filme 4", 2, 4.0)  // Desconto de 50% = 2.0
+				);
+				
+		// Ação
+		Locacao resultado = service.alugarFilme(usuario, filmes);
+		
+		// Verificação
+		// Filme 4.0 - 50% = 2.0 então 4.0 + 4.0 + 3.0 + 2.0 = 13.0
+		assertThat(resultado.getValor(), is(13.0));
+	}
 }
